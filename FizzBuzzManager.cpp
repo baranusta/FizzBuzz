@@ -2,22 +2,19 @@
 
 FizzBuzzManager::FizzBuzzManager()
 {
-	outputs = new std::string[4];
-	outputs[0] = "Fizz";
-	outputs[1] = "Buzz";
-	outputs[2] = "";
-	outputs[3] = "";
+	fizz = new std::string[4]{"","Fizz\n","Buzz\n","FizzBuzz\n"};
 }
 
 FizzBuzzManager::~FizzBuzzManager()
 {
-	delete[] outputs;
+	delete[] fizz;
 }
 
 
 std::string FizzBuzzManager::getMessage(int num) const
 {
-	int index = Divisibility::isDivisibleBy3(num);
-	std::string wow = outputs[index];
-	return wow;
+	int index=0;
+	index += Divisibility::isDivisibleBy3(num);
+	index += Divisibility::isDivisibleBy5(num) * 2;
+	return fizz[index];
 }

@@ -6,7 +6,7 @@
 #include <iostream>
 
 
-#define RUNTEST true
+#define RUNTEST false
 
 void RunFizzBuzz(int round)
 {

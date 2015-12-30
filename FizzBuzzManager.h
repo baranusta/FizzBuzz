@@ -11,7 +11,7 @@ public:
 	~FizzBuzzManager();
 	std::string getMessage(int num) const;
 private:
-	std::string* outputs;
+	std::string* fizz;
 };
 
 #endif
