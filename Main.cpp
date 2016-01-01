@@ -1,25 +1,20 @@
 #define CATCH_CONFIG_RUNNER
 #include "Catch/Catch.h"
 #include "FizzBuzzManager.h"
+#include "FizzBuzzWithArrayStrategy.h";
 
 #include <time.h>
-#include <iostream>
-
 
 #define RUNTEST false
 
-void RunFizzBuzz(int round)
+void RunFizzBuzz(FizzBuzzManager& man, long long round, std::ostream& stream)
 {
-	FizzBuzzManager myManager;
 	time_t start, end;
 	time(&start);
-	for (auto i = 0; i < round;i++)
-	{
-		std::cout<<myManager.getMessage(i);
-	} 
+	man.runFizzBuzz(round, stream);
 	time(&end);
 	double dif = difftime(end, start);
-	printf("Elasped time is %.2lf seconds.", dif);
+	printf("Elapsed time is %.4lf seconds.\n", dif);
 }
 
 int main()
@@ -30,7 +25,16 @@ int main()
 		return result;
 	}
 	else
-		RunFizzBuzz(10000);
+	{
+		std::ofstream file1("yo1.txt");
+		std::ofstream file2("yo2.txt");
+		FizzBuzzManager defManager;
+		RunFizzBuzz(defManager,10000000,file1);
+		FizzBuzzManager myManager(new FizzBuzzWithArrayStrategy());
+		RunFizzBuzz(myManager, 10000000, file2);
+		file1.close();
+		file2.close();
+	}
 
 	return 0;
 }

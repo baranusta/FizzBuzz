@@ -2,19 +2,25 @@
 
 FizzBuzzManager::FizzBuzzManager()
 {
-	fizz = new std::string[4]{"","Fizz\n","Buzz\n","FizzBuzz\n"};
+	strategy = new FizzBuzzWithModuloStrategy();
+}
+
+FizzBuzzManager::FizzBuzzManager(FizzBuzzStrategy* str)
+	:strategy(str)
+{
 }
 
 FizzBuzzManager::~FizzBuzzManager()
 {
-	delete[] fizz;
+	delete strategy;
 }
 
-
-std::string FizzBuzzManager::getMessage(int num) const
+void FizzBuzzManager::runFizzBuzz(long long round, std::ostream& stream) const
 {
-	int index=0;
-	index += Divisibility::isDivisibleBy3(num);
-	index += Divisibility::isDivisibleBy5(num) * 2;
-	return fizz[index];
+	stream << *strategy->getAllFizzBuzzText(round);
+}
+
+FizzBuzzStrategy* FizzBuzzManager::getStrategy() const
+{
+	return strategy;
 }
