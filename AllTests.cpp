@@ -10,7 +10,6 @@ TEST_CASE("DivisibilityTest", "[tv]") {
 	REQUIRE(!Divisibility::isDivisibleBy5(9));
 }
 
-#define RUNFORSTRATEGIES {
 
 TEST_CASE("FizzBuzzStrategiesTests", "[tv]") {
 	SECTION("FizzBuzzWithModuloStrategy Tests")
