@@ -33,9 +33,8 @@ inline std::string* FizzBuzzWithArrayStrategy::getString(long long num)
 
 inline std::string* FizzBuzzWithArrayStrategy::getAllFizzBuzzText(long long round)
 {
-
 	std::string* text = new std::string();;
-	int remaining = round;
+	auto remaining = round;
 	while (remaining>=15)
 	{
 		for (int i = 0; i < 15; i++)
@@ -44,7 +43,7 @@ inline std::string* FizzBuzzWithArrayStrategy::getAllFizzBuzzText(long long roun
 		}
 		remaining -= 15;
 	}
-	for (int i = 0; i <= remaining; i++)
+	for (auto i = 0; i <= remaining; i++)
 	{
 		*text += *getString(i);
 	}

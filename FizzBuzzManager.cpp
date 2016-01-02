@@ -17,7 +17,7 @@ FizzBuzzManager::~FizzBuzzManager()
 
 void FizzBuzzManager::runFizzBuzz(long long round, std::ostream& stream) const
 {
-	stream << *strategy->getAllFizzBuzzText(round);
+	stream<<*strategy->getAllFizzBuzzText(round);
 }
 
 FizzBuzzStrategy* FizzBuzzManager::getStrategy() const

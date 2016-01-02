@@ -4,17 +4,17 @@
 #include "FizzBuzzWithArrayStrategy.h";
 
 #include <time.h>
+#include <chrono>
 
 #define RUNTEST false
 
 void RunFizzBuzz(FizzBuzzManager& man, long long round, std::ostream& stream)
 {
-	time_t start, end;
-	time(&start);
+	auto t1 = std::chrono::high_resolution_clock::now();
 	man.runFizzBuzz(round, stream);
-	time(&end);
-	double dif = difftime(end, start);
-	printf("Elapsed time is %.4lf seconds.\n", dif);
+	auto t2 = std::chrono::high_resolution_clock::now();
+	std::chrono::duration<double, std::milli> fp_ms = t2 - t1;
+	std::cout << "Took " << fp_ms.count() << " ms, ";
 }
 
 int main()
